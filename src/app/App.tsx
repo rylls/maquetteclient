@@ -6,18 +6,18 @@ import { ChatBot } from './components/ChatBot';
 import logoVroomly from '../imports/logo_vroomly_pink.b4ae72651b55-1.png';
 
 export default function App() {
-  // Permet de savoir sur quelle URL on se trouve pour surligner le menu
   const location = useLocation();
 
   return (
     <div className="flex h-screen bg-slate-50">
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-slate-200 flex flex-col">
+        {/* Logo */}
         <div className="p-6 border-b border-slate-200">
           <img src={logoVroomly} alt="Vroomly" className="h-10 w-auto" />
         </div>
 
-        {/* Navigation avec des vrais liens */}
+        {/* Navigation */}
         <nav className="flex-1 p-4 space-y-2">
           <Link
             to="/"
@@ -64,6 +64,7 @@ export default function App() {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Top Bar */}
         <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8">
           <div>
             <h2 className="text-xl text-slate-900">
@@ -78,7 +79,7 @@ export default function App() {
           </div>
         </header>
 
-        {/* C'est ici que les pages changent */}
+        {/* Content Area */}
         <main className="flex-1 overflow-auto p-8">
           <Routes>
             <Route path="/" element={<Dashboard />} />
@@ -87,6 +88,7 @@ export default function App() {
         </main>
       </div>
 
+      {/* ChatBot */}
       <ChatBot />
     </div>
   );
