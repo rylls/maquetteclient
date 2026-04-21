@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { TrendingUp, TrendingDown, DollarSign, ShoppingCart, Clock, Package2, Calendar, AlertCircle } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -22,6 +23,7 @@ const topParts = [
 
 export function Dashboard() {
   const [dateRange, setDateRange] = useState('30 derniers jours');
+  const navigate = useNavigate();
 
   // Données pour les produits non en ligne
   const offlineProducts = 127;
@@ -53,7 +55,10 @@ export function Dashboard() {
               Vous avez <span className="font-semibold text-orange-600">{offlineProducts} produits</span> non en vente sur Vroomly.
               Cela représente <span className="font-semibold text-orange-600">{potentialRevenue.toLocaleString('fr-FR')} € de revenus potentiels</span>.
             </p>
-            <button className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium">
+            <button 
+              onClick={() => navigate('/inventaire?status=offline')}
+              className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium"
+            >
               Voir les produits hors ligne
             </button>
           </div>
