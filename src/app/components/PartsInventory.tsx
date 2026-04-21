@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router';
 import { Search, ChevronDown } from 'lucide-react';
 
 export interface Part {
@@ -29,7 +30,12 @@ const mockParts: Part[] = [
 
 export function PartsInventory() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterStatus, setFilterStatus] = useState<'all' | 'online' | 'offline'>('all');
+  
+  // Lecture de l'URL pour initialiser le filtre
+  const [searchParams] = useSearchParams();
+  const initialStatus = (searchParams.get('status') as 'all' | 'online' | 'offline') || 'all';
+  
+  const [filterStatus, setFilterStatus] = useState<'all' | 'online' | 'offline'>(initialStatus);
   const [parts, setParts] = useState(mockParts);
 
   const toggleStatus = (id: string) => {
