@@ -15,7 +15,7 @@ export interface Part {
   sku: string;
   price: number;
   stock: number;
-  status: 'online' | 'offline' | 'not_imported'; // Nouveau statut ajouté
+  status: 'online' | 'offline' | 'not_imported';
   image: string;
 }
 
@@ -25,17 +25,17 @@ const mockParts: Part[] = [
   { id: '3', name: 'Alternateur', category: 'Électrique', sku: 'ELE-056', price: 245.00, stock: 12, status: 'offline', image: '⚡' },
   { id: '4', name: 'Amortisseur', category: 'Suspension', sku: 'SUS-112', price: 125.00, stock: 34, status: 'online', image: '🔩' },
   { id: '5', name: 'Kit de distribution', category: 'Pièces moteur', sku: 'ENG-089', price: 156.50, stock: 28, status: 'online', image: '⚙️' },
-  // Ajout de 10 produits non importés
-  { id: 'NI-1', name: 'Radiateur de refroidissement', category: 'Moteur', sku: 'RAD-012', price: 110.00, stock: 5, status: 'not_imported', image: '🌡️' },
-  { id: 'NI-2', name: 'Pompe à eau', category: 'Moteur', sku: 'PMP-088', price: 45.00, stock: 12, status: 'not_imported', image: '💧' },
-  { id: 'NI-3', name: 'Cardan avant droit', category: 'Transmission', sku: 'TRM-451', price: 135.00, stock: 3, status: 'not_imported', image: '⛓️' },
-  { id: 'NI-4', name: 'Batterie 70Ah', category: 'Électrique', sku: 'BAT-70A', price: 95.00, stock: 20, status: 'not_imported', image: '🔋' },
-  { id: 'NI-5', name: 'Bougies d\'allumage x4', category: 'Moteur', sku: 'IG-009', price: 28.00, stock: 50, status: 'not_imported', image: '🔌' },
-  { id: 'NI-6', name: 'Condenseur de clim', category: 'Climatisation', sku: 'AC-102', price: 160.00, stock: 8, status: 'not_imported', image: '❄️' },
-  { id: 'NI-7', name: 'Embrayage kit complet', category: 'Transmission', sku: 'CLU-990', price: 290.00, stock: 2, status: 'not_imported', image: '⚙️' },
-  { id: 'NI-8', name: 'Bobine d\'allumage', category: 'Électrique', sku: 'COIL-44', price: 55.00, stock: 15, status: 'not_imported', image: '⚡' },
-  { id: 'NI-9', name: 'Vase d\'expansion', category: 'Moteur', sku: 'EXP-11', price: 22.00, stock: 10, status: 'not_imported', image: '🏺' },
-  { id: 'NI-10', name: 'Support moteur', category: 'Moteur', sku: 'MNT-05', price: 48.00, stock: 6, status: 'not_imported', image: '🔩' },
+  // 10 produits non importés avec stock à 0
+  { id: 'NI-1', name: 'Radiateur de refroidissement', category: 'Moteur', sku: 'RAD-012', price: 110.00, stock: 0, status: 'not_imported', image: '🌡️' },
+  { id: 'NI-2', name: 'Pompe à eau', category: 'Moteur', sku: 'PMP-088', price: 45.00, stock: 0, status: 'not_imported', image: '💧' },
+  { id: 'NI-3', name: 'Cardan avant droit', category: 'Transmission', sku: 'TRM-451', price: 135.00, stock: 0, status: 'not_imported', image: '⛓️' },
+  { id: 'NI-4', name: 'Batterie 70Ah', category: 'Électrique', sku: 'BAT-70A', price: 95.00, stock: 0, status: 'not_imported', image: '🔋' },
+  { id: 'NI-5', name: 'Bougies d\'allumage x4', category: 'Moteur', sku: 'IG-009', price: 28.00, stock: 0, status: 'not_imported', image: '🔌' },
+  { id: 'NI-6', name: 'Condenseur de clim', category: 'Climatisation', sku: 'AC-102', price: 160.00, stock: 0, status: 'not_imported', image: '❄️' },
+  { id: 'NI-7', name: 'Embrayage kit complet', category: 'Transmission', sku: 'CLU-990', price: 290.00, stock: 0, status: 'not_imported', image: '⚙️' },
+  { id: 'NI-8', name: 'Bobine d\'allumage', category: 'Électrique', sku: 'COIL-44', price: 55.00, stock: 0, status: 'not_imported', image: '⚡' },
+  { id: 'NI-9', name: 'Vase d\'expansion', category: 'Moteur', sku: 'EXP-11', price: 22.00, stock: 0, status: 'not_imported', image: '🏺' },
+  { id: 'NI-10', name: 'Support moteur', category: 'Moteur', sku: 'MNT-05', price: 48.00, stock: 0, status: 'not_imported', image: '🔩' },
 ];
 
 export function PartsInventory() {
@@ -139,12 +139,13 @@ export function PartsInventory() {
                             style={{ width: `${Math.min((part.stock / 200) * 100, 100)}%` }}
                           ></div>
                         </div>
-                        <span className="text-sm font-medium text-slate-700">{part.stock}</span>
+                        <span className={`text-sm font-medium ${part.stock === 0 ? 'text-red-600' : 'text-slate-700'}`}>
+                          {part.stock}
+                        </span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        {/* Affichage du badge selon le statut */}
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                           part.status === 'online' ? 'bg-green-50 text-green-700' :
                           part.status === 'offline' ? 'bg-slate-100 text-slate-600' :
@@ -154,16 +155,19 @@ export function PartsInventory() {
                            part.status === 'offline' ? 'Hors ligne' : 'Non importé'}
                         </span>
 
-                        {/* Toggle ou Bouton Info selon le statut */}
                         {part.status === 'not_imported' ? (
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <button className="p-1 text-slate-400 hover:text-red-500 transition-colors">
+                              <button className="p-1 text-slate-400 hover:text-blue-500 transition-colors">
                                 <Info className="w-5 h-5" />
                               </button>
                             </TooltipTrigger>
-                            <TooltipContent>
-                              <a href="#" className="text-red-600 underline font-medium" onClick={(e) => e.preventDefault()}>
+                            <TooltipContent className="bg-white border border-slate-200">
+                              <a 
+                                href="#" 
+                                className="text-blue-600 hover:text-blue-800 underline font-medium text-sm" 
+                                onClick={(e) => e.preventDefault()}
+                              >
                                 Voir comment importer mon produit
                               </a>
                             </TooltipContent>
