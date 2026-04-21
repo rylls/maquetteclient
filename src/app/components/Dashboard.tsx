@@ -26,8 +26,8 @@ export function Dashboard() {
   const navigate = useNavigate();
 
   // Données pour les produits non en ligne
-  const offlineProducts = 127;
-  const potentialRevenue = 18750;
+  const offlineProducts = 6;
+  const potentialRevenue = 9400;
 
   return (
     <div className="space-y-6">
