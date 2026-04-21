@@ -35,7 +35,6 @@ export function ChatBot() {
 
     setTimeout(() => {
       const responses = [
-        'Le produit "Frein à disque Brembo" a actuellement une forte demande, vous semble l\'avoir en offline, nous vous recommendons de l'activer',
         'D\'après vos données, je recommande de mettre en ligne les pièces de freinage pour augmenter vos revenus.',
         'Vos ventes de filtres à huile sont en hausse de 15% ce mois-ci !',
         'Je vous suggère de réapprovisionner vos amortisseurs, le stock est faible.',
