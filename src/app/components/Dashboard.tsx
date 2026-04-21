@@ -25,9 +25,9 @@ export function Dashboard() {
   const [dateRange, setDateRange] = useState('30 derniers jours');
   const navigate = useNavigate();
 
-  // Données pour les produits non en ligne
-  const offlineProducts = 6;
-  const potentialRevenue = 9400;
+  // Mise à jour : 10 produits non importés
+  const notImportedProducts = 10;
+  const potentialRevenue = 18750;
 
   return (
     <div className="space-y-6">
@@ -43,7 +43,7 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* Alert Banner - Produits non en vente */}
+      {/* Alert Banner - Modifié pour "Produits non importés" */}
       <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -52,14 +52,14 @@ export function Dashboard() {
           <div className="flex-1">
             <h3 className="text-lg text-slate-900 mb-1">Opportunité de revenus</h3>
             <p className="text-slate-700 mb-3">
-              Vous avez <span className="font-semibold text-orange-600">{offlineProducts} produits</span> non en vente sur Vroomly.
+              Vous avez <span className="font-semibold text-orange-600">{notImportedProducts} produits</span> non importés sur Vroomly.
               Cela représente <span className="font-semibold text-orange-600">{potentialRevenue.toLocaleString('fr-FR')} € de revenus potentiels</span>.
             </p>
             <button 
-              onClick={() => navigate('/inventaire?status=offline')}
+              onClick={() => navigate('/inventaire?status=not_imported')}
               className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium"
             >
-              Voir les produits hors ligne
+              Voir les produits non importés
             </button>
           </div>
         </div>
