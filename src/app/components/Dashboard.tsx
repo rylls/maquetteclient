@@ -25,7 +25,7 @@ export function Dashboard() {
   const [dateRange, setDateRange] = useState('30 derniers jours');
   const navigate = useNavigate();
 
-  // Mise à jour : 10 produits non importés
+  // 10 produits non importés
   const notImportedProducts = 10;
   const potentialRevenue = 18750;
 
@@ -43,7 +43,7 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* Alert Banner - Modifié pour "Produits non importés" */}
+      {/* Alert Banner - Produits non importés */}
       <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-xl p-6">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
