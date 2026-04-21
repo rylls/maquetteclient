@@ -13,19 +13,19 @@ const salesData = [
   { day: '30 Avr', revenue: 4500 },
 ];
 
+// Mise à jour avec des marques réalistes
 const topParts = [
-  { id: 1, name: 'Plaquettes de frein premium', sku: 'BRK-045', sold: 156, stock: 67 },
-  { id: 2, name: 'Filtre à huile premium', sku: 'FIL-001', sold: 142, stock: 145 },
-  { id: 3, name: 'Kit de distribution', sku: 'ENG-089', sold: 128, stock: 28 },
-  { id: 4, name: 'Amortisseur', sku: 'SUS-112', sold: 98, stock: 34 },
-  { id: 5, name: 'Filtre d\'habitacle', sku: 'FIL-019', sold: 87, stock: 189 },
+  { id: 1, name: 'Plaquettes de frein Brembo P61119', sku: 'BRK-045', sold: 156, stock: 67 },
+  { id: 2, name: 'Filtre à huile Purflux LS923', sku: 'FIL-001', sold: 142, stock: 145 },
+  { id: 3, name: 'Kit de distribution SKF VKMA', sku: 'ENG-089', sold: 128, stock: 28 },
+  { id: 4, name: 'Amortisseur Monroe Original', sku: 'SUS-112', sold: 98, stock: 34 },
+  { id: 5, name: 'Filtre d\'habitacle Valeo 715610', sku: 'FIL-019', sold: 87, stock: 189 },
 ];
 
 export function Dashboard() {
   const [dateRange, setDateRange] = useState('30 derniers jours');
   const navigate = useNavigate();
 
-  // 10 produits non importés
   const notImportedProducts = 10;
   const potentialRevenue = 18750;
 
